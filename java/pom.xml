@@ -40,6 +40,11 @@
             <artifactId>mockito-core</artifactId>
             <version>3.6.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.clojure</groupId>
+            <artifactId>clojure</artifactId>
+            <version>1.10.1</version>
+        </dependency>
     </dependencies>
 
 </project>
