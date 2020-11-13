@@ -9,7 +9,7 @@ public class SimpleEnemy extends Target {
 
     public SimpleEnemy(Armor armor, List<Buff> buffs) {
         this.armor = armor;
-        this.buffs = buffs;
+        this.buffs = List.copyOf(buffs);
     }
 
     List<Buff> getBuffs() {
