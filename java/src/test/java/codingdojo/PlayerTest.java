@@ -3,6 +3,8 @@ package codingdojo;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
@@ -20,14 +22,20 @@ public class PlayerTest {
         assertEquals(10, damage.getAmount());
     }
 
-    // choose this one if you are not familiar with mocks
-    @Disabled("Test is not finished yet")
     @Test
-    void damageCalculations() {
-        Inventory inventory = new Inventory(null);
+    public void zero_everything() {
+        Equipment equipment = new Equipment(
+                new BasicItem(null, 0, 0),
+                new BasicItem(null, 0, 0),
+                new BasicItem(null, 0, 0),
+                new BasicItem(null, 0, 0),
+                new BasicItem(null, 0, 0));
+        Inventory inventory = new Inventory(equipment);
         Stats stats = new Stats(0);
-        SimpleEnemy target = new SimpleEnemy(null, null);
+        List<Buff> buffs = List.of();
+        Armor armor = new SimpleArmor(0);
+        SimpleEnemy target = new SimpleEnemy(armor, buffs);
         Damage damage = new Player(inventory, stats).calculateDamage(target);
-        assertEquals(10, damage.getAmount());
+        assertEquals(0, damage.getAmount());
     }
 }

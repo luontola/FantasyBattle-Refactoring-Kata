@@ -27,14 +27,14 @@ class Player extends Target {
         } else if (other instanceof SimpleEnemy) {
             SimpleEnemy simpleEnemy = (SimpleEnemy) other;
             soak = Math.round(
-                simpleEnemy.getArmor().getDamageSoak() *
-                (
-                    ((float) simpleEnemy.getBuffs()
-                        .stream()
-                        .mapToDouble(Buff::soakModifier)
-                        .sum()) +
-                    1f
-                )
+                    simpleEnemy.getArmor().getDamageSoak() *
+                            (
+                                    ((float) simpleEnemy.getBuffs()
+                                            .stream()
+                                            .mapToDouble(Buff::soakModifier)
+                                            .sum()) +
+                                            1f
+                            )
             );
         }
         return soak;
@@ -49,11 +49,11 @@ class Player extends Target {
         Item chest = equipment.getChest();
         float strengthModifier = stats.getStrength() * 0.1f;
         return strengthModifier +
-            leftHand.getDamageModifier() +
-            rightHand.getDamageModifier() +
-            head.getDamageModifier() +
-            feet.getDamageModifier() +
-            chest.getDamageModifier();
+                leftHand.getDamageModifier() +
+                rightHand.getDamageModifier() +
+                head.getDamageModifier() +
+                feet.getDamageModifier() +
+                chest.getDamageModifier();
     }
 
     private int getBaseDamage() {
@@ -64,9 +64,9 @@ class Player extends Target {
         Item feet = equipment.getFeet();
         Item chest = equipment.getChest();
         return leftHand.getBaseDamage() +
-        rightHand.getBaseDamage() +
-        head.getBaseDamage() +
-        feet.getBaseDamage() +
-        chest.getBaseDamage();
+                rightHand.getBaseDamage() +
+                head.getBaseDamage() +
+                feet.getBaseDamage() +
+                chest.getBaseDamage();
     }
 }
