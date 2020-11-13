@@ -38,4 +38,21 @@ public class PlayerTest {
         Damage damage = new Player(inventory, stats).calculateDamage(target);
         assertEquals(0, damage.getAmount());
     }
+
+    @Test
+    public void non_zero_values() {
+        Equipment equipment = new Equipment(
+                new BasicItem(null, 1, 1),
+                new BasicItem(null, 1, 1),
+                new BasicItem(null, 1, 1),
+                new BasicItem(null, 1, 1),
+                new BasicItem(null, 1, 1));
+        Inventory inventory = new Inventory(equipment);
+        Stats stats = new Stats(2);
+        List<Buff> buffs = List.of();
+        Armor armor = new SimpleArmor(3);
+        SimpleEnemy target = new SimpleEnemy(armor, buffs);
+        Damage damage = new Player(inventory, stats).calculateDamage(target);
+        assertEquals(23, damage.getAmount());
+    }
 }
